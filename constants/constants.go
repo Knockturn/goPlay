@@ -17,6 +17,37 @@ import (
 
 const a string = "A"
 
+const (
+	_ = iota + 5 // setting first to _ sets it to throwaway is good because otherwhise it can be true even when not (initialized as 0)
+	catSpecialist
+	dogSpecialist
+	snakeSpecialist
+)
+
+const (
+	_ = iota // ignore first value by assigning to black identifier
+	KB = 1 << (10 * iota)
+	MB
+	GB
+	TB
+	PB
+	EB
+	ZB
+	YB
+)
+
+const (
+	isAdmin = 1 << iota
+	isHeadQuarters
+	canSeeFinancials
+
+	canSeeAfrica
+	canSeeAsia
+	canSeeEurope
+	canSeeNorthAmerica
+	canSeeSouthAmerica
+)
+
 // Consts work the same most of the way as a variable (var) - however it is immutable (unchangeable)
 func main() {
 	// other language: const MY_CONST
@@ -51,6 +82,14 @@ func main() {
 	fmt.Printf("%v\n", g)
 	fmt.Printf("%v\n", h)
 	fmt.Printf("%v\n", i)
-}
 
-// PROGRESS: https://youtu.be/YS4e4q9oBaU?t=5742
+	var specialistType int = catSpecialist
+	fmt.Printf("%v\n", specialistType == catSpecialist)
+
+	fileSize := 4000000000.
+	fmt.Printf("%.2fGB\n", fileSize/GB)
+
+	// Store roles and access rights for user very efficiently in a single byte(TODO: readup on this.)
+	var roles byte = isAdmin | canSeeFinancials | canSeeEurope
+	fmt.Printf("%b\n", roles)
+}
