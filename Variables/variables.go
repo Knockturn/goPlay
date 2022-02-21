@@ -29,7 +29,7 @@ func main(){
 	fmt.Println(G)
 
 	fmt.Println(h)
-	var h float32 = 44 // You can declare a variable once pr. scope. Aka - shadowing
+	var h float32 = 44 // You can declare a variable once pr. scope. Also the inner scope will win -refered to as: shadowing
 	fmt.Println(h)
 
 	var i int
