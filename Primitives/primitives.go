@@ -56,7 +56,7 @@ func main() {
 
 	// Bit shifting
 	f := 8 // 2^3
-	fmt.Println("\nBit shifting")
+	fmt.Println("\nBit shifting") //TODO: Read up on this! (Bit Shifting)
 	fmt.Println(f << 3) // 2^3 * 2^3 or 2^6
 	fmt.Println(f >> 3) // 2^3 / 2^3 or 2^0
 
