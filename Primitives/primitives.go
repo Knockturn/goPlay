@@ -52,7 +52,7 @@ func main() {
 	fmt.Println(uint(d) & e) // 0010 (&)
 	fmt.Println(uint(d) | e) // 1011 (or)
 	fmt.Println(uint(d) ^ e) // 1001 (Exclusive or)
-	fmt.Println(uint(d) &^ e) // 0100 (and not)
+	fmt.Println(uint(d) &^ e) // &^ is AND NOT, which means you negate the second operand. So you would have 1010 & 1100 = 1000 = 8, you put 0100 and that's 4 not 8. (from youtube comments)
 
 	// Bit shifting
 	f := 8 // 2^3
