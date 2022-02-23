@@ -18,6 +18,7 @@ AGENDA:
 import (
 	// "C:/Repos/goPlay/MapsAndStructs/Structs"
 	"fmt"
+	"reflect" //used to get tags
 )
 
 func main() {
@@ -69,6 +70,7 @@ func main() {
 	fmt.Println(statePopulations2)
 
 	structsExamples()
+	embedding()
 }
 
 type Doctor struct { // Capital to export outside this package (currently it would not see any fieldNames though - then you would have to capitalze those)
@@ -120,8 +122,55 @@ func structsExamples(){
 	fmt.Println(cDoctor)
 	fmt.Println(anotherDoctor)
 
-	//Embedding
-	println("\nEmbedding:")
+	
 	}
 
-	// PROGRESS: https://youtu.be/YS4e4q9oBaU?t=9465
+type Animal struct {
+	Name string
+	Origin string
+}
+
+type Bird struct {
+	Animal
+	SpeedKPH float32
+	CanFly bool
+}
+
+func embedding (){
+	//Embedding
+	/*
+	NOTES:
+	Embedding one struct inside another is KIND of like inheritance. You could say bird inherits animal but they are indeed seperate.
+	Interfaces are better to use when you want to describe common behavior.
+	*/
+	println("\nEmbedding:")
+	b := Bird{}
+	b.Name = "Emu"
+	b.Origin = "Australia"
+	b.SpeedKPH = 48
+	b.CanFly = false
+	fmt.Println(b.Name)
+
+	// Literal syntax
+	c := Bird{
+		Animal: Animal{Name: "Emu", Origin: "Australia"},
+		SpeedKPH: 48,
+		CanFly: false,
+	}
+	fmt.Println(c)
+}
+
+type Animal2 struct {
+	Name string `required max:"1001"`
+	Origin string
+}
+
+func tagsExample (){
+	//Tags
+	/*
+	Tags a meaningless by themselves. It needs a validation library that has to then parse it.
+	*/
+	t := reflect.TypeOf(Animal2{})
+	field, _ := t.FieldByName("Name")
+	fmt.Println(field.Tag)
+}
