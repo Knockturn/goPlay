@@ -81,7 +81,7 @@ func main() {
 	fmt.Println(h)
 
 	//Last way to make a slice
-	i := make([]int, 3)
+	i := make([]int, 3) // Initialize array with 3 indexes - all of them 0
 	fmt.Println(i)
 	fmt.Printf("Length: %v\n", len(i))
 	fmt.Printf("Capacity: %v\n", cap(i))
@@ -101,10 +101,22 @@ func main() {
 	fmt.Printf("Capacity: %v\n", cap(k))
 
 	l := make([]int, 3, 3)
-
 	fmt.Printf("L Length: %v\n", len(l))
 	fmt.Printf("L Capacity: %v\n", cap(l))
+	fmt.Println(l)
+	
+	l = append(l, []int{1,2,3}...) // Unable to merge array into an array (slice). THen you have to use the ... (which will split out the array to individual pieces)
+	fmt.Printf("L Length: %v\n", len(l))
+	fmt.Printf("L Capacity: %v\n", cap(l))
+	fmt.Printf("L w. append: %v\n", l)
 
+	//
+	fmt.Println("New slice with parts of old")
+	m := l[1:] // First value removed
+	fmt.Println(m)
+	n := l[:len(l)-1] // Last value removed
+	fmt.Println(n)
+	o1 := []int{1,2,3,4,5}
+	o2 := append(o1[:2], o1[3:]...) // Append up to NOT incl index 2, then append again from and INCL index 3 and on
+	fmt.Println(o2)	
 }
-
-// Progress: https://youtu.be/YS4e4q9oBaU?t=7650
