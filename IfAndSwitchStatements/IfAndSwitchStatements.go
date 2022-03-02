@@ -152,7 +152,22 @@ func switchStatements(test int) {
     var iFace interface{} = 1
     switch iFace.(type) {
     case int:
-        fmt.Println("iFacec is an int")
+        fmt.Println("iFace is an int")
+    case float64:
+        fmt.Println("iFace is a float64")
+    case string:
+        fmt.Println("iFace is a string")
+    default:
+        fmt.Println("iFace is not: int, float64 or string")
+    }
+
+    // How to leave a switch early: (use break keyword)
+    var iBreak interface{} = 1.0
+    switch iBreak.(type) {
+    case int:
+        fmt.Println("iFace is an int")
+        // break
+        fmt.Println("This will not print if break above is uncommented")
     case float64:
         fmt.Println("iFace is a float64")
     case string:
