@@ -102,9 +102,6 @@ func operators(){
     >=
     !=
     */
-
-   
-
 }
 
  
@@ -113,8 +110,6 @@ func returnTrue() bool {
     fmt.Println("Returning True")
     return true
 }
-
- 
 
 // SWITCH
 func switchStatements(test int) {
