@@ -5,7 +5,7 @@ package main
 AGENDA: (control flow)
 	Defer (function that can be invoked but delay its execution)
 	Panic (enter a state where application can no longer run)
-	Recover (if application can be saved, how we tell that to the entire application)
+	Recover (if application can be saved, how we tell that to the entire application) - always put in a defer function (anonymous)
 */
 
 import (
