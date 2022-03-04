@@ -10,6 +10,7 @@ AGENDA: (control flow)
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -26,8 +27,9 @@ func main () {
 	defer fmt.Println(a)
 	a = "end"
 
-	panicFunc()
-	panicHttp()
+	// panicFunc()
+	// panicHttp()
+	recoverFunc()
 }
 
 func panicFunc() {
@@ -56,5 +58,21 @@ func panicHttp() {
 		panic(err.Error())
 	}
 }
+// panic is called last normal defer called before you panic
+func recoverFunc(){
+	fmt.Println("Start")
+	panicker() // Will exit the function after the panic but continue the code below - like a try-catch (panic-recover)
+	fmt.Println("end")
+}
 
-// Progress: https://youtu.be/YS4e4q9oBaU?t=14016
+func panicker() {
+	fmt.Println("about to panic")
+	defer func() { // anonymous function. Defined at one point and can only be called 1 time
+		if err := recover(); err != nil {
+			log.Println("Error: ", err)
+			// panic(err) // rethrow in order to get the FULL stack (if you need to debug)
+		}
+	}()
+	panic("something went wrong...")
+	fmt.Println("done panicking")
+}
