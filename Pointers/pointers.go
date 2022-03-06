@@ -17,6 +17,9 @@ import (
 
 func main() {
 	fmt.Println("POINTERS:")
+	a := 42
+	b := a // A copy of a at point of creation. NOT pointing to the same data (like slices)
+	fmt.Println(a, b)
 }
 
 // progress: https://youtu.be/YS4e4q9oBaU?t=14671
