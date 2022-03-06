@@ -26,12 +26,12 @@ func main() {
 	// Maps = Key Value pair.
 	statePopulations := map[string]int{
 		"California": 39250017,
-		"Texas" : 27862596,
-		"Florida": 20612439,
+		"Texas":      27862596,
+		"Florida":    20612439,
 	}
 	fmt.Println(statePopulations)
 	/*
-	NOTE: A slice cannot be a key to a map. It has to be an array
+		NOTE: A slice cannot be a key to a map. It has to be an array
 	*/
 	a := map[[3]int]string{} // Note the 3 to indicate capacity making this an array not a slice which would be: []int
 	fmt.Println(a)
@@ -40,8 +40,8 @@ func main() {
 	statePopulations2 := make(map[string]int) // Note: Will take a 3rd argument - but unsure of what it does - where in the array/slice it would be capacity.
 	statePopulations2 = map[string]int{
 		"California": 39250017,
-		"Texas" : 27862596,
-		"Florida": 20612439,
+		"Texas":      27862596,
+		"Florida":    20612439,
 	}
 	fmt.Println(statePopulations2)
 
@@ -74,23 +74,24 @@ func main() {
 }
 
 type Doctor struct { // Capital to export outside this package (currently it would not see any fieldNames though - then you would have to capitalze those)
-	number int
-	actorName string
+	number     int
+	actorName  string
 	companions []string
-	episodes []string // Added to show that you dont need to add all the data. However if you use the outcommented method (Positional Syntax) it WILL break as it cannot map the data.
+	episodes   []string // Added to show that you dont need to add all the data. However if you use the outcommented method (Positional Syntax) it WILL break as it cannot map the data.
 }
 
-func structsExamples(){
+func structsExamples() {
 	// Last collection type: STRUCT (Might not seem like one to begin with)
 	/*
-	NOTES:
-	Strengh of a struct is that you have NO constrainst on the type of data within one.
-	Structs can even contain other structs
+		NOTES:
+		Strengh of a struct is that you have NO constrainst on the type of data within one.
+		Structs can even contain other structs
+		Similar to a DTO
 	*/
 	fmt.Println("\nSTRUCT examples")
 
 	aDoctor := Doctor{
-		number: 3,
+		number:    3,
 		actorName: "John Pertwee",
 		companions: []string{
 			"Liz Shaw",
@@ -115,33 +116,32 @@ func structsExamples(){
 	// fmt.Println(bDoctor.companions[1])
 
 	// Another way to initialzie a struct (Following should only be lived if Data is short-lived in your app)
-	cDoctor := struct{name string}{name: "John Pertwee"} // First brackets initialize the struct and its fields. 2nd brackets provide the data
+	cDoctor := struct{ name string }{name: "John Pertwee"} // First brackets initialize the struct and its fields. 2nd brackets provide the data
 	fmt.Println(cDoctor)
 	anotherDoctor := cDoctor
 	anotherDoctor.name = "Tom Baker"
 	fmt.Println(cDoctor)
 	fmt.Println(anotherDoctor)
 
-	
-	}
+}
 
 type Animal struct {
-	Name string
+	Name   string
 	Origin string
 }
 
 type Bird struct {
 	Animal
 	SpeedKPH float32
-	CanFly bool
+	CanFly   bool
 }
 
-func embedding (){
+func embedding() {
 	//Embedding
 	/*
-	NOTES:
-	Embedding one struct inside another is KIND of like inheritance. You could say bird inherits animal but they are indeed seperate.
-	Interfaces are better to use when you want to describe common behavior.
+		NOTES:
+		Embedding one struct inside another is KIND of like inheritance. You could say bird inherits animal but they are indeed seperate.
+		Interfaces are better to use when you want to describe common behavior.
 	*/
 	println("\nEmbedding:")
 	b := Bird{}
@@ -153,22 +153,22 @@ func embedding (){
 
 	// Literal syntax
 	c := Bird{
-		Animal: Animal{Name: "Emu", Origin: "Australia"},
+		Animal:   Animal{Name: "Emu", Origin: "Australia"},
 		SpeedKPH: 48,
-		CanFly: false,
+		CanFly:   false,
 	}
 	fmt.Println(c)
 }
 
 type Animal2 struct {
-	Name string `required max:"1001"`
+	Name   string `required max:"1001"`
 	Origin string
 }
 
-func tagsExample (){
+func tagsExample() {
 	//Tags
 	/*
-	Tags a meaningless by themselves. It needs a validation library that has to then parse it.
+		Tags a meaningless by themselves. It needs a validation library that has to then parse it.
 	*/
 	t := reflect.TypeOf(Animal2{})
 	field, _ := t.FieldByName("Name")
