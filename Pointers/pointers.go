@@ -6,6 +6,7 @@ package main
 AGENDA:
 	Creating pointers
 		Dereferencing pointers (using pointers to get to some underlying data)
+			(Complex types: ex structs, are automatically derefenced)
 		The 'new' function
 		Working with nil
 		Types with internal pointers
