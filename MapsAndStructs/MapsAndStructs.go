@@ -3,7 +3,7 @@ package main
 // Course part start: https://www.youtube.com/watch?v=YS4e4q9oBaU&t=8240s
 /*
 AGENDA:
-	Maps
+	Maps (pointers - uses reference data)
 		What are they?
 		Creating
 		Manipulation
