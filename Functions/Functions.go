@@ -117,7 +117,7 @@ func returnSumAsPointer(values ...int) *int {
 	/*
 		In a lot of languages this is not a valid operation as the local var will be cleared from memory after function is done running.
 		So pointing to data in here would be gone - hence invalid.
-		But in Go - it promotes the local var to heap memory (global memory) once you make it a pointer.
+		But in Go - it promotes the local var to heap memory (shared memory) once you make it a pointer (local memory: stack memory).
 	*/
 	result := 0
 	for _, v := range values {
