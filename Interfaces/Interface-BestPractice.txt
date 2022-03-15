@@ -1,0 +1,12 @@
+Best practices:
+https://youtu.be/YS4e4q9oBaU?t=19430
+
+- Use many, small interfaces
+    - Single method interfaces are some of the most powerful and flexible
+        - io.Writer, io.Reader, interface{}
+
+- Dont export interfaces for types that will be consumed
+    - EX: DB example earlier
+- Do export intercfaces for types that will be used by package
+(above is backwards from what you do in C# - so this would not possible in C#)
+- Design functions and methods to recieve interfaces whenever possible

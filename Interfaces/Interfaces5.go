@@ -6,23 +6,23 @@ import (
 	"io"
 )
 
-// Start: https://youtu.be/YS4e4q9oBaU?t=18715
-// Same as Interfaces3 but there is a type conversion on line 18
+// Start: https://youtu.be/YS4e4q9oBaU?t=18995
+
+/*
+Problem with an empty interface is that it has no methods.
+So you need to either do a type conversion or
+use the reflect package, in order to figure out what object you are dealing with
+*/
 
 func main() {
-	fmt.Println("Type Conversion")
-	var wc WriterCloser = NewBufferedWriterCloser()
-	wc.Write([]byte("Hello Youtube listeners, this is a test"))
-	wc.Close()
+	fmt.Println("The Empty Interface")
+	var myObj interface{} = NewBufferedWriterCloser()
+	if wc, ok := myObj.(WriterCloser); ok {
+		wc.Write([]byte("Hello Youtube listeners, this is a test"))
+		wc.Close()
+	}
 
-	// Type conversion below From WriterCloser to BufferedWriterCloser
-	bwc := wc.(*BufferedWriterCloser)
-	fmt.Println(bwc)
-
-	// bwc2 := wc.(io.Reader) // Will fail because we dont implement the reader method.
-	// fmt.Println(bwc2)
-	// Below is a proper way of doing it (so it doesnt fail on missing implementation)
-	r, ok := wc.(io.Reader)
+	r, ok := myObj.(io.Reader)
 	if ok {
 		fmt.Println(r)
 	} else {
