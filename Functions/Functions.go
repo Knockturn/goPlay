@@ -9,7 +9,7 @@ AGENDA:
 	Return values
 	Anonymous functions
 	Functions as types (first class citizen)
-	Method (special type of function)
+	Method (function that is executed in a known context, i.e. any type (int, struct, string etc))
 */
 
 import (

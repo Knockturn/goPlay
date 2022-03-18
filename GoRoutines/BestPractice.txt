@@ -1,0 +1,9 @@
+- Don't create goroutines in libraries!
+    Let the consumer control concurrency
+    Can be softened if it returns a channel
+
+- When creating a goroutine, know how it will end!
+    Avoids subtle memory leaks
+
+- Check for race conditions at compile time
+    "go run -race myGoFile.go"
