@@ -50,7 +50,7 @@ func logger() {
 			fmt.Printf("%v - [%v]%v\n", entry.time.Format("2006-01-02T15:04:05"), entry.severity, entry.message)
 		case <-doneCh: // Will loop forever until it recieves an signal from the doneCh. Normally it would get sent in as a parameter in the logger function above.
 			break
-		// A default here would break it because it would then not be a blocking select statement.
+		// A default here would break it because it would then not be a blocking select statement. So if no entries come in for the above cases it will execute the default.
 		}
 	}
 }
