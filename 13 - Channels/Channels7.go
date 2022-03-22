@@ -13,6 +13,8 @@ var wg = sync.WaitGroup{}
 /*
 	Showcase for when you don't have an obvious way to close your channel.
 	This is a basic logger
+
+	A select statement allow goroutines to monitor several channels at once.
 */
 const (
 	logInfo = "INFO"
