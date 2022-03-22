@@ -41,3 +41,5 @@ func main() {
 
 	wg.Wait()
 }
+
+// NOTE: Always have a way to close your goroutine properly

@@ -15,6 +15,8 @@ AGENDA:
 		Tags
 */
 
+// Note from future: A struct with no fields (struct{}) requires 0 memory allocation. See example in Channels7.go
+
 import (
 	// "C:/Repos/goPlay/MapsAndStructs/Structs"
 	"fmt"
